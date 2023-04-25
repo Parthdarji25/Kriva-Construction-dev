@@ -82,17 +82,16 @@ const service = {
 };
 
 const styles = {
-  container: {margin: "100px auto" , width: "550px" }
+  container: {margin: "100px"}
 };
 
 const Voucher = () => (
   <div style={styles.container}>
     <CRUDTable
-      caption="Tasks"
       fetchItems={(payload) => service.fetchItems(payload)}
     >
       <Fields>
-        <Field name="id" label="Id" />
+        <Field name="id" label="Id" placeholder="Id"/>
         <Field name="name" label="Name" placeholder="Name" />
       </Fields>
       <CreateForm

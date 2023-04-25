@@ -116,6 +116,7 @@
     padding: 0;
     width: 2rem;
     line-height: 2rem;
+    margin-left: 80%;
   }
   
   .crud-button--primary {
@@ -129,6 +130,7 @@
   
   .crud-button--positive {
     background-color: #21d05b;
+    margin-bottom: 20px;
   }
   
   .crud-button--positive:hover {

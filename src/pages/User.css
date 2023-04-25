@@ -8,8 +8,7 @@
 .face-img img {
     position: absolute;
     border-radius: 50%;
-    left: 15%;
-    bottom: -30%;
+   margin: 280px;
 }
 
 .cam-img img {
@@ -27,10 +26,9 @@
 
 .sv-chng-btn {
     position: absolute;
-    right: 24%;
     text-decoration: none;
     padding: 10px 20px;
-    bottom: -24%;
+    margin: 200px 0 0 950px;
     border-radius: 42px;
     color: #fff;
     background: rgb(0, 108, 224);

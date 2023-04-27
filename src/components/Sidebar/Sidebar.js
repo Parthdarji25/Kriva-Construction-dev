@@ -19,7 +19,7 @@ const Sidebar = () => {
           <div>
             <Link to="#" className="nav-logo">
               <i className={`fa-solid fa-truck-fast nav-logo-icon`}></i>
-              <span className="nav-logo-name">Bhargav Cement</span>
+              <span className="nav-logo-name">Bhargav Project Cement</span>
             </Link>
 
             <div className="nav-list">

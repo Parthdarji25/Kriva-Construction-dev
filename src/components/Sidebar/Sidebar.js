@@ -5,13 +5,54 @@ import { Link } from "react-router-dom";
 // import Voucher from "../../pages/Voucher";
 
 const Sidebar = () => {
-  const [show, setShow] = useState(false);
-
+  const [show, setShow,menuToggle] = useState(false);
+  // function menuToggle() {
+  //   const toggleMenu = document.querySelector(".menu");
+  //   toggleMenu.classList.toggle("active");}
   return (
     <main className={show ? "space-toggle" : null}>
       <header className={`header ${show ? "space-toggle" : null}`}>
         <div className="header-toggle" onClick={() => setShow(!show)}>
           <i className={`fas fa-bars ${show ? "fa-solid fa-xmark" : null}`}></i>
+        </div>
+        {/* User Account Section */}
+        <div class="action">
+          <div class="profile" onclick={() => menuToggle()}>
+            <img src="./assets/avatar.jpg" />
+          </div>
+          <div class="menu">
+            <h3>
+              Someone Famous
+              <br />
+              <span>Website Designer</span>
+            </h3>
+            <ul>
+              <li>
+                <img src="./assets/icons/user.png" />
+                <a href="#">My profile</a>
+              </li>
+              <li>
+                <img src="./assets/icons/edit.png" />
+                <a href="#">Edit profile</a>
+              </li>
+              <li>
+                <img src="./assets/icons/envelope.png" />
+                <a href="#">Inbox</a>
+              </li>
+              <li>
+                <img src="./assets/icons/settings.png" />
+                <a href="#">Setting</a>
+              </li>
+              <li>
+                <img src="./assets/icons/question.png" />
+                <a href="#">Help</a>
+              </li>
+              <li>
+                <img src="./assets/icons/log-out.png" />
+                <a href="#">Logout</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </header>
       <aside className={`sidebar ${show ? "show" : null}`}>

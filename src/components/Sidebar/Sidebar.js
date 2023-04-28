@@ -1,14 +1,42 @@
-import React, { useState } from "react";
-import "./index.css";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-// import Profile from "../src/pages/Profile";
-// import Voucher from "../../pages/Voucher";
+import user from "../../assets/images/user.png";
+import edit from "../../assets/images/edit.png";
+import inbox from "../../assets/images/envelope.png";
+import settings from "../../assets/images/settings.png";
+import help from "../../assets/images/question.png";
+import logout from "../../assets/images/log-out.png";
+import "./index.css";
 
 const Sidebar = () => {
-  const [show, setShow,menuToggle] = useState(false);
-  // function menuToggle() {
-  //   const toggleMenu = document.querySelector(".menu");
-  //   toggleMenu.classList.toggle("active");}
+  const [show, setShow] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  let menuRef = useRef();
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (!menuRef.current.contains(e.target)) {
+        setOpen(false);
+        console.log(menuRef.current);
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
+
+  function DropdownItem(props) {
+    return (
+      <li className="dropdownItem">
+        <img src={props.img}></img>
+        <a> {props.text} </a>
+      </li>
+    );
+  }
   return (
     <main className={show ? "space-toggle" : null}>
       <header className={`header ${show ? "space-toggle" : null}`}>
@@ -16,41 +44,29 @@ const Sidebar = () => {
           <i className={`fas fa-bars ${show ? "fa-solid fa-xmark" : null}`}></i>
         </div>
         {/* User Account Section */}
-        <div class="action">
-          <div class="profile" onclick={() => menuToggle()}>
-            <img src="./assets/avatar.jpg" />
+        <div className="menu-container" ref={menuRef}>
+          <div
+            className="menu-trigger"
+            onClick={() => {
+              setOpen(!open);
+            }}
+          >
+            <img src={user}></img>
           </div>
-          <div class="menu">
+
+          <div className={`dropdown-menu ${open ? "active" : "inactive"}`}>
             <h3>
-              Someone Famous
+              Bhargav Admin
               <br />
-              <span>Website Designer</span>
+              <span>Constructor</span>
             </h3>
             <ul>
-              <li>
-                <img src="./assets/icons/user.png" />
-                <a href="#">My profile</a>
-              </li>
-              <li>
-                <img src="./assets/icons/edit.png" />
-                <a href="#">Edit profile</a>
-              </li>
-              <li>
-                <img src="./assets/icons/envelope.png" />
-                <a href="#">Inbox</a>
-              </li>
-              <li>
-                <img src="./assets/icons/settings.png" />
-                <a href="#">Setting</a>
-              </li>
-              <li>
-                <img src="./assets/icons/question.png" />
-                <a href="#">Help</a>
-              </li>
-              <li>
-                <img src="./assets/icons/log-out.png" />
-                <a href="#">Logout</a>
-              </li>
+              <DropdownItem img={user} text={"My Profile"} />
+              <DropdownItem img={edit} text={"Edit Profile"} />
+              <DropdownItem img={inbox} text={"Inbox"} />
+              <DropdownItem img={settings} text={"Settings"} />
+              <DropdownItem img={help} text={"Helps"} />
+              <DropdownItem img={logout} text={"Logout"} />
             </ul>
           </div>
         </div>

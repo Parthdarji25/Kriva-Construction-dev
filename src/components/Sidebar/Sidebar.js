@@ -21,7 +21,6 @@ const Sidebar = () => {
               <i className={`fa-solid fa-truck-fast nav-logo-icon`}></i>
               <span className="nav-logo-name">Bhargav Cement</span>
             </Link>
-
             <div className="nav-list">
               <Link to="/" className="nav-link ">
                 <i className="fa-solid fa-list nav-logo-icon"></i>
@@ -36,19 +35,19 @@ const Sidebar = () => {
                 <span className="nav-link-name">Vouchers</span>
               </Link>
               <Link to="/vendor" className="nav-link">
-                <i className="fas fa-dollar-sign nav-link-icon"></i>
+                <i className="fas fa-book nav-link-icon"></i>
                 <span className="nav-link-name">Vendors</span>
-              </Link>
-              <Link to="/item" className="nav-link">
-                <i className="fas fa-money-bill nav-link-icon"></i>
-                <span className="nav-coins-name">Items</span>
               </Link>
               <Link to="/unit" className="nav-link">
                 <i className="fas fa-money-bill nav-link-icon"></i>
                 <span className="nav-coins-name">Units</span>
               </Link>
+              <Link to="/item" className="nav-link">
+                <i className="fas fa-city nav-link-icon"></i>
+                <span className="nav-coins-name">Items</span>
+              </Link>
               <Link to="/subitem" className="nav-link">
-                <i className="fas fa-dollar-sign nav-link-icon"></i>
+                <i className="fas fa-toolbox nav-link-icon"></i>
                 <span className="nav-sitemap-name">Sub-Items</span>
               </Link>
             </div>

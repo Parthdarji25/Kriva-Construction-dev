@@ -1,5 +1,5 @@
 .dashboard-page-sec {
-  margin-top: 120px;
+  margin: 100px 35px 0 -20px;
 }
 
 .header-wrap {
@@ -50,7 +50,7 @@ table {
 }
 
 th {
-  padding: 12px 12px;
+  padding: 10px 10px;
   font-weight: 600;
   border-right: 1px solid lightgrey;
 }
@@ -62,7 +62,7 @@ tr {
 td {
   font-size: 15px;
   text-align: center;
-  padding: 5px;
+  padding: 2px;
 }
 
 table {

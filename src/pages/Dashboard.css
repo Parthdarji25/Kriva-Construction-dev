@@ -20,6 +20,8 @@
   border: none;
   background-color: #d8dbe3;
   border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .dashboard-wrap {
@@ -39,12 +41,22 @@
 table,
 td,
 th {
-  border: 1px solid;
+  /* border: 1px solid; */
   color: var(--text-color);
+}
+
+table {
+  border-radius: 4px;
 }
 
 th {
   padding: 12px 12px;
+  font-weight: 600;
+  border-right: 1px solid lightgrey;
+}
+
+tr {
+  border-bottom: 1px solid lightgrey;
 }
 
 td {
@@ -57,6 +69,7 @@ table {
   border-collapse: collapse;
   width: 100%;
   margin: 0 auto;
+  box-shadow: 1px 1px 10px #415858;
 }
 
 .dashboard-select {

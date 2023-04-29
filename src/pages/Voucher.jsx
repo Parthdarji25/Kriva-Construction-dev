@@ -6,155 +6,149 @@ import './Voucher.css';
 function Employees() {
 
 
-    const list = [
-        {
-            id: "1",
-            heading: "ID",
-            headingname: "Name",
-            price: "30",
-            name: "Viren"
-        }, {
-            id: "2",
-            heading: "ID",
-            headingname: "Name",
-            price: "32",
-            name: "Manoj"
-        },
-    ]
+  const list = [
+    {
+      id: "1",
+      price: "30",
+      name: "Viren"
+    }, {
+      id: "2",
+      price: "32",
+      name: "Manoj"
+    },
+  ]
 
-    const [lists, setList] = useState(list);
+  const [lists, setList] = useState(list);
 
-    const [updateState, setUpdateState] = useState(-1)
+  const [updateState, setUpdateState] = useState(-1)
 
-    return (
+  return (
 
 
-        <div className="crud">
+    <div className="crud">
 
-            <div>
-                <AddList setList={setList} />
-                <form onSubmit={handleSubmit}>
-                    <table>
-                        {
-                            lists.map((current) => (
-                                updateState === current.id ? <EditList current={current} lists={lists} setList={setList} /> :
+      <div>
+        <AddList setList={setList} />
+        <form onSubmit={handleSubmit}>
+          <table>
 
-                                    <tr>
+            <tr>
 
-                                        {/* <th>{current.heading}</th>
-                                        <th>{current.headingname}</th> */}
+              <td>ID</td>
+              <td>Name</td>
+              <td>Action</td>
 
-                                        <td>{current.name}</td>
-                                        <td>{current.price}</td>
-                                        <td>
-                                            <button className="edit" onClick={() => handleEdit(current.id)}>Edit</button>
-                                            <button className="delete" type="button" onClick={() => handleDelete(current.id)}>Delete</button>
-                                        </td>
-                                    </tr>
-                            ))
-                        }
-                    </table>
-                </form>
-            </div>
-        </div>
-    );
+            </tr>
 
-    function handleEdit(id) {
-        setUpdateState(id);
-    }
+            {
+              lists.map((current) => (
+                updateState === current.id ? <EditList current={current} lists={lists} setList={setList} /> :
 
-    function handleDelete(id) {
-        const newlist = lists.filter((li) => li.id !== id)
-        setList(newlist)
-    }
+                  <tr>
 
-    function handleSubmit(event) {
-        event.preventDefault()
-        const name = event.target.elements.name.value
-        const price = event.target.elements.price.value
-        const newlist = lists.map((li) => (
-            li.id === updateState ? { ...li, name: name, price: price } : li
-        ))
+                    <td>{current.id}</td>
+                    <td>{current.name}</td>
+                    <td>
+                      <button className="edit" onClick={() => handleEdit(current.id)}>Edit</button>
+                      <button className="delete" type="button" onClick={() => handleDelete(current.id)}>Delete</button>
+                    </td>
+                  </tr>
+              ))
+            }
+          </table>
+        </form>
+      </div>
+    </div>
+  );
 
-        setList(newlist)
-        setUpdateState(-1)
-    }
+  function handleEdit(id) {
+    setUpdateState(id);
+  }
+
+  function handleDelete(id) {
+    const newlist = lists.filter((li) => li.id !== id)
+    setList(newlist)
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    const name = event.target.elements.name.value
+    const price = event.target.elements.price.value
+    const newlist = lists.map((li) => (
+      li.id === updateState ? { ...li, name: name, price: price } : li
+    ))
+
+    setList(newlist)
+    setUpdateState(-1)
+  }
 }
 
 function EditList({ current, lists, setList }) {
 
-    function handInputname(event) {
-        const value = event.target.value;
-        const newlist = lists.map((li) => (
-            li.id === current.id ? { ...li, name: value } : li
-        ))
+  function handInputname(event) {
+    const value = event.target.value;
+    const newlist = lists.map((li) => (
+      li.id === current.id ? { ...li, name: value } : li
+    ))
 
-        setList(newlist)
-    }
+    setList(newlist)
+  }
 
-    function handInputprice(event) {
-        const value = event.target.value;
-        const newlist = lists.map((li) => (
-            li.id === current.id ? { ...li, price: value } : li
-        ))
+  function handInputprice(event) {
+    const value = event.target.value;
+    const newlist = lists.map((li) => (
+      li.id === current.id ? { ...li, price: value } : li
+    ))
 
-        setList(newlist)
-    }
+    setList(newlist)
+  }
 
-    return (
-        <tr>
-            <td><input type="text" onChange={handInputname} name="name" value={current.name} /></td>
-            <td><input type="text" onChange={handInputprice} name="price" value={current.price} /></td>
-            <td><button type="submit">Update</button></td>
-        </tr>
-    );
+  return (
+    <tr>
+      <td><input type="text" onChange={handInputname} name="name" value={current.name} /></td>
+      <td><input type="text" onChange={handInputprice} name="price" value={current.price} /></td>
+      <td><button type="submit">Update</button></td>
+    </tr>
+  );
 }
 
 
 
 function AddList({ setList }) {
 
-    const nameRef = useRef();
-    const priceRef = useRef();
+  const nameRef = useRef();
+  const priceRef = useRef();
 
-    function handleSubmit(event) {
-        event.preventDefault();
-        const name = event.target.elements.name.value;
-        const price = event.target.elements.price.value;
-        const newlist = {
-            id: 3,
-            name,
-            price
-        }
-
-
-        setList((prevList) => {
-            return prevList.concat(newlist)
-        })
-
-        nameRef.current.value = "";
-        priceRef.current.value = "";
-
+  function handleSubmit(event) {
+    event.preventDefault();
+    const name = event.target.elements.name.value;
+    const price = event.target.elements.price.value;
+    const newlist = {
+      id: 3,
+      name,
+      price
     }
 
-    return (
 
-        <>
-        <form className="addform" onSubmit={handleSubmit}>
-            <input type="text" name="name" placeholder="Enter ID" ref={nameRef} />
-            <input type="text" name="price" placeholder="Enter Name" ref={priceRef} />
-            <button type="submit">Create</button>
-        </form>
-        {/* <table>
-            <tbody>
-                <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                </tr>
-            </tbody>
-        </table> */}
-        </>
-    );
+    setList((prevList) => {
+      return prevList.concat(newlist)
+    })
+
+    nameRef.current.value = "";
+    priceRef.current.value = "";
+
+  }
+
+  return (
+
+    <>
+      <form className="addform" onSubmit={handleSubmit}>
+        <input type="text" name="name" placeholder="Enter ID" ref={nameRef} />
+        <input type="text" name="price" placeholder="Enter Name" ref={priceRef} />
+        <button type="submit">Create</button>
+      </form>
+    </>
+  );
 
 }
 

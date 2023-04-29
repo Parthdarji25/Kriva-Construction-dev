@@ -29,7 +29,7 @@ function App() {
           <Route path='/user' element={<User />} />
           <Route path='/vendor' element={<Vendor />} />
           <Route path='/voucher' element={<Voucher />} />
-          <Route path='/subitem' element={<Subitem />} />
+          {/* <Route path='/subitem' element={<Subitem />} /> */}
 
         </Routes>
 
